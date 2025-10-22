@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Silicon Verify - VLSI Training & Internships</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background: #f8f9fb; color: #333; line-height: 1.6; scroll-behavior: smooth; }
+    a { text-decoration: none; }
+
+    /* Header */
+    header {
+      background: #0b1d51;
+      color: white;
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    }
+
+    .logo-container h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffc107;
+      letter-spacing: 0.5px;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1.5rem;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #ffc107; }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      background: linear-gradient(135deg, #0b1d51, #162447);
+      color: white;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #ffc107;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 4px #000;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin-bottom: 2rem;
+      color: #f4f4f4;
+      text-shadow: 1px 1px 3px #000;
+    }
+    .hero a {
+      background: #ffc107;
+      color: #162447;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: 0.3s;
+    }
+    .hero a:hover { background: #e0a800; }
+
+    /* Sections */
+    section { padding: 4rem 2rem; max-width: 1200px; margin: auto; }
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 2.5rem;
+      color: #0b1d51;
+    }
+    .about {
+      text-align: center;
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    .card h3 { color: #0b1d51; margin-bottom: 1rem; }
+    .card p { margin-bottom: 1.2rem; color: #555; }
+    .card a {
+      background: #0b1d51;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .card a:hover { background: #162447; }
+
+    /* Why Us */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+    }
+    .why-card {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .why-card i {
+      font-size: 2rem;
+      color: #0b1d51;
+      margin-bottom: 1rem;
+    }
+    .why-card h3 { margin-bottom: 0.5rem; color: #0b1d51; }
+    .why-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+    /* Testimonials */
+    .testimonials {
+      overflow-x: auto;
+      display: flex;
+      gap: 1.5rem;
+      padding: 2rem;
+      scroll-behavior: smooth;
+    }
+    .testimonial {
+      min-width: 300px;
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      flex: 0 0 auto;
+      transition: 0.3s;
+    }
+    .testimonial:hover { transform: translateY(-4px); }
+    .testimonial p { color: #555; font-style: italic; margin-bottom: 1rem; }
+    .testimonial h4 { color: #0b1d51; font-weight: 700; }
+
+    /* Contact */
+    .contact {
+      background: #0b1d51;
+      color: white;
+      border-radius: 10px;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .contact p { margin-bottom: 1rem; font-size: 1.1rem; }
+    .contact a { color: #ffc107; font-weight: 600; }
+    footer {
+      background: #162447;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+      .logo-container {
+        flex-direction: column;
+      }
+      .logo-container img {
+        width: 60px;
+        height: 60px;
+      }
+      nav a {
+        margin: 0 10px;
+        display: inline-block;
+      }
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="https://raw.githubusercontent.com/Silicon-Verify/Logo/main/Silicon%20Verify%20Logo.jpg" alt="Silicon Verify Logo" />
+      <h1>Silicon Verify</h1>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#courses">Courses</a>
+      <a href="#internships">Internships</a>
+      <a href="#projects">Projects</a>
+      <a href="#whyus">Why Us</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Empowering Future VLSI Innovators</h1>
+    <p>Silicon Verify is dedicated to bridging the gap between academia and the semiconductor industry through high-quality, affordable, and practical VLSI training. Learn from industry professionals and transform your skills into a successful career.</p>
+    <a href="#contact">Get in Touch</a>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Silicon Verify</h2>
+    <div class="about">
+      <p>
+        Silicon Verify is a professional VLSI training organization focused on <strong>RTL Design, Verification, and Semiconductor Skill Development</strong>. 
+        We provide intensive, project-driven learning experiences for students and working professionals.  
+        Our mission is to create job-ready engineers who are confident in <strong>Verilog, SystemVerilog, UVM, protocols and more</strong>.
+        <br><br>
+        We partner with colleges and individual learners to offer <strong>real-world projects, internships, and mentorship</strong>. 
+        Whether you’re starting your VLSI journey or looking to strengthen your expertise — Silicon Verify is your trusted growth partner.
+      </p>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="courses">
+    <h2>Courses We Offer</h2>
+    <div class="grid">
+      <div class="card"><h3>VLSI RTL Design</h3><p>Master combinational and sequential logic design with Verilog RTL coding.</p><a href="#contact">Contact</a></div>
+      <div class="card"><h3>VLSI RTL Verification</h3><p>Learn SystemVerilog, UVM, assertions, and advanced verification environments.</p><a href="#contact">Contact</a></div>
+      <div class="card"><h3>RTL Design & Verification</h3><p>Complete design-to-verification flow with hands-on labs and mini-projects.</p><a href="#contact">Contact</a></div>
+      <div class="card"><h3>Verilog</h3><p>From RTL basics to synthesizable models and testbenches.</p><a href="#contact">Contact</a></div>
+      <div class="card"><h3>SystemVerilog</h3><p>Learn OOP, constraints, coverage, and transaction-level modeling.</p><a href="#contact">Contact</a></div>
+      <div class="card"><h3>UVM</h3><p>Industry-standard verification methodology with reusable testbench architecture.</p><a href="#contact">Contact</a></div>
+      <div class="card"><h3>AMBA Protocols</h3><p>Understand APB, AHB, and AXI protocols through implementation examples.</p><a href="#contact">Contact</a></div>
+      <div class="card"><h3>Communication Protocols</h3><p>Implement UART, SPI, and I2C with testbench and waveform analysis.</p><a href="#contact">Contact</a></div>
+      <div class="card"><h3>Gate Level Simulations</h3><p>Learn Gate level simulations in best way</p><a href="#contact">Contact</a></div>
+    </div>
+  </section>
+
+  <!-- Internships -->
+  <section id="internships">
+    <h2>Internships</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Hands-On Internship Program</h3>
+        <p>Gain industry experience by working on live design and verification projects. Real-world tasks guided by professionals.</p>
+        <a href="#contact">Contact Admin</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Real-World Projects</h3>
+        <p>Design RTL modules, verify them with UVM, and work on communication protocol integrations. Contact admin for guidance and availability.</p>
+        <a href="#contact">Contact Admin</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section id="whyus">
+    <h2>Why Choose Silicon Verify?</h2>
+    <div class="why-grid">
+      <div class="why-card"><i class="fa fa-user-tie"></i><h3>Industry Experts</h3><p>Trainers with years of semiconductor experience.</p></div>
+      <div class="why-card"><i class="fa fa-laptop-code"></i><h3>Practical Learning</h3><p>Hands-on labs and real-time project work.</p></div>
+      <div class="why-card"><i class="fa fa-rocket"></i><h3>Career Growth</h3><p>Focused on job-ready skill development.</p></div>
+      <div class="why-card"><i class="fa fa-cogs"></i><h3>Modern Tools</h3><p>Training on industry-grade simulators and workflows.</p></div>
+      <div class="why-card"><i class="fa fa-certificate"></i><h3>Verified Certification</h3><p>Build credibility with recognized certificates.</p></div>
+      <div class="why-card"><i class="fa fa-users"></i><h3>Student Support</h3><p>Active guidance and community learning.</p></div>
+      <div class="why-card"><i class="fa fa-star"></i><h3>Trusted Quality</h3><p>Proven success in skill-based learning.</p></div>
+      <div class="why-card"><i class="fa fa-briefcase"></i><h3>Internships</h3><p>Opportunities to apply your learning in real projects.</p></div>
+      <div class="why-card"><i class="fa fa-lightbulb"></i><h3>Innovation Driven</h3><p>Encouraging creativity in RTL & verification solutions.</p></div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2>What Our Students Say</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>“The best place to learn RTL Design and Verification. Hands-on projects helped me land interviews confidently.”</p>
+        <h4>— Kiran R</h4>
+      </div>
+      <div class="testimonial">
+        <p>“UVM and protocol training here made my basics strong. Silicon Verify is perfect for serious learners.”</p>
+        <h4>— Meghana S</h4>
+      </div>
+      <div class="testimonial">
+        <p>“Real industry guidance with affordable training. Highly recommended for VLSI aspirants.”</p>
+        <h4>— Harsha K</h4>
+      </div>
+      <div class="testimonial">
+        <p>“I completed the internship and learned so much about AMBA and UVM testbench structures.”</p>
+        <h4>— Divya N</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Email:</strong> <a href="mailto:siliconverifylabs@gmail.com">siliconverifylabs@gmail.com</a></p>
+    <p><strong>Phone:</strong> <a href="tel:+917396228775">+91 7396228775</a></p>
+    <p><strong>Address:</strong> Bangalore, India</p>
+    <p>Reach out for <strong>courses, internships, or project guidance.</strong> We’ll respond within 24 hours!</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Silicon Verify. All rights reserved.
+  </footer>
+</body>
+</html>
